@@ -4,7 +4,7 @@ object roberto {
     var peso = 60
     var vehiculo = camion
     var tieneTelefono = false
-    const paquete = [manzana]
+    const paquete = []
 
     method peso() {
         return peso + vehiculo.peso() + self.pesoTotalDeLosPaquetes()
@@ -58,7 +58,7 @@ object chuckNorris {
     }
 }
 object neo {
-    const paquete = [manzana]
+    const paquete = []
     var tieneCredito = 30
 
     method peso(){
