@@ -1,3 +1,4 @@
+import mensajeria.*
 import mensajeros.*
 import ciudades.*
 import vehiculos.*
@@ -22,7 +23,33 @@ describe "grupo de test sobre 'viaje antes que destino, de Dalinar Kholin'" {
   test "neo con crédito no puede llevar un paquete por falta de pago"{
     assert.that(not (neo.realizarEntrega(kholinar)))
   }
-  test "a"{
-
-  }
 }
+
+  describe "Empresa de Mensajeria" {
+
+    test "contratar 2 mensajeros" {
+      mensajeria.contratarMensajero(neo)
+      mensajeria.contratarMensajero(roberto)
+      assert.equals(2, mensajeria.mensajeros().size())
+    }
+    test "despedir mensajero" {
+      mensajeria.contratarMensajero(neo)
+      mensajeria.contratarMensajero(roberto)
+      mensajeria.despedirMensajero(neo)
+      assert.equals(1, mensajeria.mensajeros().size())
+    }
+    test "despedir todos los mensajeros"{
+      mensajeria.contratarMensajero(neo)
+      mensajeria.contratarMensajero(roberto)
+      mensajeria.contratarMensajero(neo)
+      mensajeria.contratarMensajero(roberto)
+      mensajeria.despedirTodosLosMensajeros()
+      assert.equals(0, mensajeria.mensajeros().size())
+    }
+    test "primer mensajero puede entregar el paquete"{
+      mensajeria.contratarMensajero(roberto)
+      mensajeria.contratarMensajero(neo)
+      assert.that(not mensajeria.primerMensajeroPuedeEntregar())
+
+    }  
+  }
