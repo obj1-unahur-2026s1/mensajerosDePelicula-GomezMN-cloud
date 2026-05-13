@@ -1,9 +1,28 @@
-import example
+import mensajeros.*
+import ciudades.*
+import vehiculos.*
 
-describe "group of tests for pepita" {
+describe "grupo de test sobre 'viaje antes que destino, de Dalinar Kholin'" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "roberto peso inicial" {
+    assert.equals(1160, roberto.peso())
   }
+  test "roberto transporta paquete con 2 acomplados"{
+    camion.sumarAcoplado()
+    assert.equals(1660, roberto.peso())
+  }
+  test "neo puede llamar y entregar"{
+    assert.that(neo.puedeLlamar())
+    neo.realizarLlamada()
+    neo.realizarEntrega(kholinar)
+    neo.realizarLlamada()
+    neo.realizarLlamada()
+    assert.that(not (neo.puedeLlamar()))
+  }
+  test "neo con crédito no puede llevar un paquete por falta de pago"{
+    assert.that(not (neo.realizarEntrega(kholinar)))
+  }
+  test "a"{
 
+  }
 }
